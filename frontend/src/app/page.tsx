@@ -11,7 +11,6 @@ const options = { next: { revalidate: 30 } };
 
 export default async function Home() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
-  console.log(posts);
 
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
