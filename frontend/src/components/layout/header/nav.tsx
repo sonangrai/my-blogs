@@ -16,7 +16,7 @@ async function Nav() {
 
   return (
     <nav>
-      <ul>
+      <ul className="flex gap-4">
         {category.map((cat) => (
           <li key={cat.title}>
             <Link href="" className="lowercase">

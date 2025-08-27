@@ -4,7 +4,7 @@ import Tools from "./tools";
 
 function Header() {
   return (
-    <header className="border-b-1 py-4">
+    <header className="border-b-1 py-4 sticky top-0">
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="text-xl">
           blogs.sonahangrai
