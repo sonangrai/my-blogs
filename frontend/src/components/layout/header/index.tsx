@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className="border-b-1 py-4 sticky top-0 bg-white">
       <div className="container mx-auto flex items-center justify-between">
-        <Link href="/" className="text-xl">
+        <Link href="/" className="text-xl font-hubot">
           blogs.sonahangrai
         </Link>
 

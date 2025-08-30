@@ -29,7 +29,6 @@ export default defineType({
         {title: 'H3', value: 'h3'},
         {title: 'H4', value: 'h4'},
         {title: 'Quote', value: 'blockquote'},
-        {title: 'Code', value: 'pre'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
       // Marks let you mark up inline text in the block editor.
@@ -63,6 +62,24 @@ export default defineType({
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
+    }),
+
+    defineArrayMember({
+      type: 'code',
+      title: 'Code block',
+      options: {
+        withFilename: true,
+        language: 'javascript',
+        languageAlternatives: [
+          {title: 'JavaScript', value: 'javascript'},
+          {title: 'TypeScript', value: 'typescript'},
+          {title: 'Python', value: 'python'},
+          {title: 'HTML', value: 'html'},
+          {title: 'CSS', value: 'css'},
+          {title: 'JSON', value: 'json'},
+          {title: 'Markdown', value: 'markdown'},
+        ],
+      },
     }),
   ],
 })

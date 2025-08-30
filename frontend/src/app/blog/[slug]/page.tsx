@@ -13,6 +13,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
     await params,
     options
   );
+  console.log(post);
 
   return (
     <div className="container mx-auto py-6 min-h-[calc(100dvh-93px)]">
@@ -24,7 +25,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
           height="100"
           className="w-full h-[300px] object-contain"
         />
-        <h1 className="my-3">{post.title}</h1>
+        <h1 className="my-3 text-4xl">{post.title}</h1>
         <PortableText value={post.body} components={BlockComponents} />
       </article>
     </div>
