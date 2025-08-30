@@ -36,7 +36,7 @@ export const BlockComponents = {
           )}
           <SyntaxHighlighter
             language={value.language || "javascript"}
-            style={oneLight}
+            style={true ? oneLight : oneDark}
             showLineNumbers
           >
             {value.code}
