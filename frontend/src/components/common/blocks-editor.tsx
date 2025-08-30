@@ -1,6 +1,9 @@
 import SanityImageComp from "./sanity-image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  oneDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export const BlockComponents = {
   types: {
@@ -33,7 +36,7 @@ export const BlockComponents = {
           )}
           <SyntaxHighlighter
             language={value.language || "javascript"}
-            style={oneDark}
+            style={oneLight}
             showLineNumbers
           >
             {value.code}
