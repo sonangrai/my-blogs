@@ -16,7 +16,7 @@ export default async function Home() {
   console.log(posts);
 
   return (
-    <main className="container mx-auto py-6 min-h-[calc(100dvh-93px)] flex flex-col justify-center">
+    <main className="container mx-auto max-w-[1200px] py-6 min-h-[calc(100dvh-93px)] flex flex-col justify-center">
       <div className="grid gap-4 grid-cols-3">
         {posts.map((post) => (
           <article className="" key={post._id}>

@@ -2,6 +2,7 @@ import { BlockComponents } from "@/components/common/blocks-editor";
 import SanityImageComp from "@/components/common/sanity-image";
 import { client } from "@/sanity/client";
 import { PortableText, SanityDocument } from "next-sanity";
+import Link from "next/link";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -13,10 +14,9 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
     await params,
     options
   );
-  console.log(post);
 
   return (
-    <div className="container mx-auto py-6 min-h-[calc(100dvh-93px)]">
+    <div className="container max-w-[1200px] mx-auto py-6 min-h-[calc(100dvh-93px)]">
       <article>
         <SanityImageComp
           asset={post.mainImage}
@@ -25,7 +25,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
           height="100"
           className="w-full h-[300px] object-contain"
         />
-        <h1 className="my-3 text-4xl">{post.title}</h1>
+        <h1 className="my-3 text-4xl font-bold">{post.title}</h1>
         <PortableText value={post.body} components={BlockComponents} />
       </article>
     </div>
