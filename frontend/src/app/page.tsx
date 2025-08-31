@@ -13,11 +13,10 @@ const options = { next: { revalidate: 30 } };
 
 export default async function Home() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
-  console.log(posts);
 
   return (
-    <main className="container mx-auto max-w-[1200px] py-6 min-h-[calc(100dvh-93px)] flex flex-col justify-center">
-      <div className="grid gap-4 grid-cols-3">
+    <main className="dark:bg-gray-800 py-6 min-h-[calc(100dvh-93px)] flex flex-col justify-center">
+      <div className="container mx-auto max-w-[1200px] grid gap-4 grid-cols-3">
         {posts.map((post) => (
           <article className="" key={post._id}>
             <Link href={`/blog/${post.slug.current}`}>
@@ -29,11 +28,11 @@ export default async function Home() {
                 className="w-full h-[240px] object-cover"
               />
             </Link>
-            <h2 className="font-bold my-2">{post.title}</h2>
-            <span className="text-xs">
+            <h2 className="font-bold my-2 dark:text-white">{post.title}</h2>
+            <span className="text-xs dark:text-white">
               {format(post.publishedAt, "MMM d, y")}
             </span>
-            <p className="font-sans text-sm text-gray-500 my-2">
+            <p className="font-sans text-sm text-gray-500 dark:text-white my-2">
               {post.excerpt}
             </p>
           </article>

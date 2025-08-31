@@ -1,5 +1,4 @@
 "use client";
-import { cn } from "@/utils/cn";
 import { useState, useEffect, useCallback } from "react";
 
 function Tools() {
@@ -30,18 +29,10 @@ function Tools() {
     <div className="flex gap-2">
       <div
         aria-label="theme switch"
-        className={cn(
-          "w-10 h-6 border-2 rounded-2xl relative cursor-pointer",
-          isDark && "bg-black border-white"
-        )}
+        className="w-10 h-6 border-2 rounded-2xl relative cursor-pointer dark:border-white"
         onClick={toggleTheme}
       >
-        <div
-          className={cn(
-            "rounded-full w-4 h-4 absolute bg-black top-[50%] translate-y-[-50%] left-1 duration-200 ease",
-            !isDark && "bg-white left-[50%]"
-          )}
-        ></div>
+        <div className="rounded-full w-4 h-4 absolute bg-black top-[50%] translate-y-[-50%] left-1 duration-200 ease dark:bg-white dark:left-[50%]"></div>
       </div>
     </div>
   );
