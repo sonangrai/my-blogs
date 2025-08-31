@@ -1,23 +1,45 @@
 "use client";
 import { cn } from "@/utils/cn";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function Tools() {
-  const [dark, setDark] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setIsDark((prev) => !prev);
+    const currentTheme = localStorage.getItem("theme") || "light";
+    localStorage.setItem("theme", currentTheme == "dark" ? "light" : "dark");
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
+  }, []);
+
   return (
     <div className="flex gap-2">
       <div
         aria-label="theme switch"
         className={cn(
           "w-10 h-6 border-2 rounded-2xl relative cursor-pointer",
-          dark && "bg-black border-white"
+          isDark && "bg-black border-white"
         )}
-        onClick={() => setDark((prev) => !prev)}
+        onClick={toggleTheme}
       >
         <div
           className={cn(
             "rounded-full w-4 h-4 absolute bg-black top-[50%] translate-y-[-50%] left-1 duration-200 ease",
-            dark && "bg-white left-[50%]"
+            !isDark && "bg-white left-[50%]"
           )}
         ></div>
       </div>

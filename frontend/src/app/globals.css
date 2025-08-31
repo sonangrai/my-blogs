@@ -12,6 +12,8 @@
   --font-hubot: var(--font-hubot-sans);
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 html,
 body {
   background: var(--background);
