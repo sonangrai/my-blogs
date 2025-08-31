@@ -1,29 +1,8 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useTheme } from "@/app/theme-provider";
 
 function Tools() {
-  const [isDark, setIsDark] = useState<boolean>(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle(
-      "dark",
-      localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-    );
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setIsDark((prev) => !prev);
-    const currentTheme = localStorage.getItem("theme") || "light";
-    localStorage.setItem("theme", currentTheme == "dark" ? "light" : "dark");
-    document.documentElement.classList.toggle(
-      "dark",
-      localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-    );
-  }, []);
+  const { toggleTheme } = useTheme();
 
   return (
     <div className="flex gap-2">

@@ -3,6 +3,7 @@ import { Geist, Hubot_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { ThemeProvider } from "./theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,14 +26,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${hubotSans.variable} antialiased`}
-      >
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ThemeProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${hubotSans.variable} antialiased`}
+        >
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

@@ -16,19 +16,23 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
   );
 
   return (
-    <div className="container max-w-[1200px] mx-auto py-6 min-h-[calc(100dvh-93px)]">
-      <article>
-        <SanityImageComp
-          asset={post.mainImage}
-          alt={post.title}
-          width="100"
-          height="100"
-          className="w-full h-[300px] object-contain"
-        />
-        <h1 className="my-3 text-4xl font-bold">{post.title}</h1>
-        <PortableText value={post.body} components={BlockComponents} />
-      </article>
-    </div>
+    <main className="dark:bg-gray-800">
+      <div className="container max-w-[1200px] mx-auto py-6 min-h-[calc(100dvh-93px)]">
+        <article>
+          <SanityImageComp
+            asset={post.mainImage}
+            alt={post.title}
+            width="100"
+            height="100"
+            className="w-full h-[300px] object-contain"
+          />
+          <h1 className="my-3 text-4xl font-bold dark:text-white">
+            {post.title}
+          </h1>
+          <PortableText value={post.body} components={BlockComponents} />
+        </article>
+      </div>
+    </main>
   );
 }
 

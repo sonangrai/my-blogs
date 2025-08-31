@@ -4,6 +4,7 @@ import {
   oneDark,
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CodeHighlighter from "./code-highlighter";
 
 export const BlockComponents = {
   types: {
@@ -34,13 +35,7 @@ export const BlockComponents = {
               {value.filename}
             </div>
           )}
-          <SyntaxHighlighter
-            language={value.language || "javascript"}
-            style={true ? oneLight : oneDark}
-            showLineNumbers
-          >
-            {value.code}
-          </SyntaxHighlighter>
+          <CodeHighlighter value={value}>{value.code}</CodeHighlighter>
         </div>
       );
     },
@@ -48,12 +43,20 @@ export const BlockComponents = {
 
   block: {
     normal: ({ children }: any) => (
-      <p className="font-sans text-md my-2">{children}</p>
+      <p className="font-sans text-md my-2 dark:text-white">{children}</p>
     ),
-    h1: ({ children }: any) => <h1 className="text-4xl">{children}</h1>,
-    h2: ({ children }: any) => <h2 className="text-3xl">{children}</h2>,
-    h3: ({ children }: any) => <h3 className="text-2xl">{children}</h3>,
-    h4: ({ children }: any) => <h4 className="text-xl">{children}</h4>,
+    h1: ({ children }: any) => (
+      <h1 className="text-4xl dark:text-white">{children}</h1>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="text-3xl dark:text-white">{children}</h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="text-2xl dark:text-white">{children}</h3>
+    ),
+    h4: ({ children }: any) => (
+      <h4 className="text-xl dark:text-white">{children}</h4>
+    ),
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 pl-4 italic">{children}</blockquote>
     ),
